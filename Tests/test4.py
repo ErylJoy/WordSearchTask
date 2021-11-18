@@ -11,12 +11,10 @@ import time
 import argparse
 
 
-parser = argparse.ArgumentParser(
-    description='This Program generates a word search with given words')
+parser = argparse.ArgumentParser(description='This Program generates a word search with given words')
 parser.add_argument('width', help='Width of the grid')
 parser.add_argument('height', help='Height of the grid')
-parser.add_argument(
-    'numOfWords', help='The file to read words to include from')
+parser.add_argument('numOfWords', help='The file to read words to include from')
 
 args = parser.parse_args()
 
@@ -32,30 +30,30 @@ pg.generate('../Resources/temppuzzle.txt',
             '../Resources/tempwords.txt', width, height)
 
 
-print "loading puzzle..."
+print("loading puzzle...")
 file = open("../Resources/temppuzzle.txt", "r")
 grid = file.read().splitlines()
 file.close()
 
 
-print "loading words to find..."
+print("loading words to find...")
 file = open("../Resources/tempwords.txt", "r")
 words_to_find = file.read().splitlines()
 file.close()
 
-print "loading solver.."
+print("loading solver...")
 start = time.time()
 ws = v.WordSearch(grid, width)
 end = time.time()
 print("build time: "+str(end - start))
 
 allFound = True
-print "beginning search..."
+print("beginning search...")
 start = time.time()
 ROW_LENGTH = width
 for word in words_to_find:
     if ws.is_present(word):
-        print "found {}".format(word)
+        print("found {}".format(word))
     else:
         allFound = False
 
@@ -63,9 +61,9 @@ for word in words_to_find:
 end = time.time()
 print(end - start)
 if allFound:
-    print "found all"
+    print("found all")
 else:
-    print "din't find all"
+    print("din't find all")
 
 os.remove("../Resources/temppuzzle.txt")
 os.remove("../Resources/tempwords.txt")

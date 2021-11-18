@@ -1,23 +1,29 @@
-
+import re
 import random
+
 # Class for Word Search
-
-
 class WordSearch(object):
     def __init__(self, grid, ROW_LENGTH):
         self.grid = grid
         self.hashedGrid = {}
         lines = 0
 
+        # generates the rows
         y = [self.grid[i:i + ROW_LENGTH]
              for i in range(0, len(self.grid), ROW_LENGTH)]
+
+        #generates the columns
         z = [list(j) for j in zip(*y)]
+
+        # places every allowed string in each row into the dictionary
         for row in y:
             for i in range(len(row)):
                 j = 1
                 while j < 24 and i + j <= len(row):
                     self.hashedGrid["".join(row[i:i+j])] = True
                     j += 1
+
+        # places every allowed string in each column into the dictionary
         for row in z:
             for i in range(len(row)):
                 j = 1
@@ -26,6 +32,13 @@ class WordSearch(object):
                     j += 1
 
     def is_present(self, word):
+        # Regular expression matching for allowed strings
+        pattern = "([a-z]){1,24}\Z"
+        if bool(re.match(pattern, word)):
+            print("Searchable words are only lowercase characters and are less than 24 characters long")
+            return False
+
+        # returns the lookup of the word in the hash table
         return self.hashedGrid.has_key(word)
 
 
@@ -39,10 +52,10 @@ if __name__ == '__main__':
 
     words_to_find = ["ad"]
 
-    print words_to_find
+    print(words_to_find)
     ROW_LENGTH = 3
     ws = WordSearch(grid)
-    print "beginning search"
+    print("beginning search")
     for word in words_to_find:
         if ws.is_present(word):
-            print "found {}".format(word)
+            print ("found {}".format(word))
