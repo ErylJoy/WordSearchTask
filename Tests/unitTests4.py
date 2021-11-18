@@ -35,7 +35,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(result, False)
     
     def testRejectsWordsWithCapitals(self):
-        testWordAsArr = list(self.testWords[r.randint(0,len(self.testWords))])
+        testWordAsArr = list(self.testWords[r.randint(0,len(self.testWords)-1)])
         indexInWord = r.randint(0, len(testWordAsArr)-1)
         testWordAsArr[indexInWord] = testWordAsArr[indexInWord].upper()
         testWord = "".join(testWordAsArr)
@@ -70,6 +70,16 @@ class TestStringMethods(unittest.TestCase):
         localSolver = v.WordSearch(['a','b','b','a'], 2)
         result = localSolver.is_present("bb") 
         self.assertEqual(result, False)
+
+    def testHidingAtEnd(self):
+        localSolver = v.WordSearch(['a','a','a','b'], 2)
+        result = localSolver.is_present("b") 
+        self.assertEqual(result, True)
+
+    def testHidingAtBeginning(self):
+        localSolver = v.WordSearch(['b','a','a','a'], 2)
+        result = localSolver.is_present("b") 
+        self.assertEqual(result, True)
         
 if __name__ == '__main__':
     unittest.main()

@@ -12,7 +12,7 @@ class WordSearch(object):
     def is_present(self, word):
         # Regular expression matching for allowed strings
         pattern = "([a-z]){1,24}\Z"
-        if bool(re.match(pattern, word)):
+        if not bool(re.match(pattern, word)):
             print("Searchable words are only lowercase characters and are less than 24 characters long")
             return False
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     # Tests grid
     grid = ['a', 'b', 'c', 'd', ]
 
-    words_to_find = ["gf"]
+    words_to_find = ["ab"]
     print(words_to_find)
 
     ws = WordSearch(grid, 2)
