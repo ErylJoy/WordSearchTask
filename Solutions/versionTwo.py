@@ -1,8 +1,8 @@
-
 import random
-# Class for Word Search
-ROW_LENGTH = 0
+import re
 
+ROW_LENGTH = 0
+# Class for Word Search
 class WordSearch(object):
     def __init__(self, grid, rowLen):
         global ROW_LENGTH
@@ -10,6 +10,13 @@ class WordSearch(object):
         ROW_LENGTH = rowLen
 
     def is_present(self, word):
+        # Regular expression matching for allowed strings
+        pattern = "([a-z]){1,24}\Z"
+        if bool(re.match(pattern, word)):
+            print("Searchable words are only lowercase characters and are less than 24 characters long")
+            return False
+        
+        # Sets the default of success to false
         success = False
         for i in range(len(self.grid)):
             if self.grid[i] == word[0]:

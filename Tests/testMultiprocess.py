@@ -11,12 +11,10 @@ from Tools import PuzzleGenerator
 from multiprocessing import Pool
 from contextlib import closing
 
-parser = argparse.ArgumentParser(
-    description='This Program generates a word search with given words')
+parser = argparse.ArgumentParser(description='This Program generates a word search with given words')
 parser.add_argument('width', help='Width of the grid')
 parser.add_argument('height', help='Height of the grid')
-parser.add_argument(
-    'numOfWords', help='The file to read words to include from')
+parser.add_argument('numOfWords', help='The file to read words to include from')
 
 args = parser.parse_args()
 

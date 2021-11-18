@@ -13,7 +13,7 @@ class PuzzleGenerator():
         file = open(wordName, "r")
         words = file.read().splitlines()
         file.close()
-        print words
+        print(words)
 
         occupied = []
 
@@ -41,7 +41,7 @@ class PuzzleGenerator():
                         grid[(row*width)+startPos+i] = word[i]
                         occupied.append(i+row*width+startPos)
                 else:
-                    print "couldn't insert "+word
+                    print("couldn't insert "+word)
 
             else:
                 accepted = False
@@ -63,7 +63,7 @@ class PuzzleGenerator():
                         grid[width*i+startPos] = word[i]
                         occupied.append(width*i+startPos)
                 else:
-                    print "couldn't insert "+word
+                    print("couldn't insert "+word)
 
         with open(outputName, "w") as file:
             for line in grid:
