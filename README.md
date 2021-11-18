@@ -75,3 +75,5 @@ Tests that strings longer than 24 characters are rejected.
 ### testFindsAllProvidedWordsInSearch
 Tests that all words that should be present are found.
 
+## Sources
+Credit to this repo https://github.com/dwyl/english-words for the word list for the the random word generator and to infochimps in turn
