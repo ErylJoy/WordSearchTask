@@ -1,6 +1,4 @@
 import re
-import random
-
 # Class for Word Search
 class WordSearch(object):
     def __init__(self, grid, ROW_LENGTH):

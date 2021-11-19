@@ -1,4 +1,3 @@
-import random
 import re
 
 ROW_LENGTH = 0
