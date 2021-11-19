@@ -1,6 +1,6 @@
-
 import random
 import re 
+
 # Class for Word Search
 ROW_LENGTH =0
 
@@ -12,27 +12,35 @@ class WordSearch(object):
 
     def is_present(self, word):
         # Regular expression matching for allowed strings
+
         pattern = "([a-z]){1,24}\Z"
         if not bool(re.match(pattern, word)):
             print("Searchable words are only lowercase characters and are less than 24 characters long")
             return False
 
-        # Imports row length
-        global ROW_LENGTH
-        #generates the rows
-        y = [self.grid[i:i + ROW_LENGTH]
-             for i in range(0, len(self.grid), ROW_LENGTH)]
-        #generats the columns
-        z = [list(j) for j in zip(*y)]
+        # Imports the global row length
 
-        #searches the rows
-        for a in y:
-            if word in "".join(a):
+        global ROW_LENGTH
+
+        # Generates the rows
+
+        rows = [self.grid[i:i + ROW_LENGTH]
+             for i in range(0, len(self.grid), ROW_LENGTH)]
+
+        # Generates the columns
+
+        columns = [list(j) for j in zip(*y)]
+
+        # Searches the rows
+
+        for r in rows:
+            if word in "".join(r):
                 return True
 
-        #searches the columns
-        for a in z:
-            if word in "".join(a):
+        # Gearches the columns
+
+        for c in columns:
+            if word in "".join(c):
                 return True
 
         return False
@@ -40,9 +48,6 @@ class WordSearch(object):
 
 # Base code for finding words
 if __name__ == '__main__':
-    import os
-    import sys
-    sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/..')
 
     grid = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
     words_to_find = ["abc"]

@@ -8,14 +8,14 @@ class WordSearch(object):
         self.hashedGrid = {}
         lines = 0
 
-        # generates the rows
+        # Generates the rows
         y = [self.grid[i:i + ROW_LENGTH]
              for i in range(0, len(self.grid), ROW_LENGTH)]
 
-        #generates the columns
+        # Generates the columns
         z = [list(j) for j in zip(*y)]
 
-        # places every allowed string in each row into the dictionary
+        # Places every allowed string in each row into the dictionary
         for row in y:
             for i in range(len(row)):
                 j = 1
@@ -23,7 +23,7 @@ class WordSearch(object):
                     self.hashedGrid["".join(row[i:i+j])] = True
                     j += 1
 
-        # places every allowed string in each column into the dictionary
+        # Places every allowed string in each column into the dictionary
         for row in z:
             for i in range(len(row)):
                 j = 1
@@ -38,7 +38,7 @@ class WordSearch(object):
             print("Searchable words are only lowercase characters and are less than 24 characters long")
             return False
 
-        # returns the lookup of the word in the hash table
+        # Returns the lookup of the word in the hash table
         return self.hashedGrid.has_key(word)
 
 

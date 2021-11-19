@@ -19,36 +19,44 @@ class WordSearch(object):
         # For every position in the grid
         for i in range(len(self.grid)):
             if self.grid[i] == word[0]:
+
                 # Verify not running over line or out of grid downwards
                 # int() floors
                 totalLines = int(len(self.grid)/ROW_LENGTH)
                 currentY = int(i/ROW_LENGTH)
                 currentX = i%ROW_LENGTH
+
                 # Should we bother checking horizontally from here
                 successHoz = currentX + len(word) <= ROW_LENGTH and self.grid[i+len(word)-1] == word[len(word)-1]
+
                 # Should we bother checking vertically from here
                 successVert = int((len(self.grid) - i-1)/ROW_LENGTH) >=len(word)-1 and self.grid[i+ROW_LENGTH*(len(word)-1)] == word[len(word)-1]
-                # if there is no point looking move on to next starting point
+                
+                # If there is no point looking move on to next starting point
                 if not successHoz and not successVert:
                     continue
-                #-1 because 
+
+                # -1 because 
                 for j in range(1, len(word)-1):
+
                     # Python evals lazily so tests space before trying to index out of bounds
+                    # Check horizontals
                     if successHoz and (self.grid[i+j] != word[j]):
                         successHoz = False
+                    
+                    # Check verticals
                     if successVert and (self.grid[ROW_LENGTH*j+i] != word[j]):
                         successVert = False
                     if not successHoz and not successVert:
                         break
+
+                # If word was found exit outer loop
                 if successHoz or successVert:
                     return True
         return False
 
 
 if __name__ == '__main__':
-    import os
-    import sys
-    sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/..')
 
     # Base code for finding words
     # Tests grid
