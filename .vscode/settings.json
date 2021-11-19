@@ -1,3 +1,4 @@
 {
-    "jupyter.kernels.filter": []
+    "jupyter.kernels.filter": [],
+    "git.terminalAuthentication": false
 }
