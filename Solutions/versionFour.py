@@ -43,9 +43,6 @@ class WordSearch(object):
 
 
 if __name__ == '__main__':
-    import os
-    import sys
-    sys.path.append(os.path.dirname(os.path.realpath(__file__)) + '/..')
 
     # Base code for finding words
     grid = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
